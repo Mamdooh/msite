@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }} - msite{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'predictor/css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <div class="container">
+        <h1 class="hero-title">Welcome to msite</h1>
+        <p class="hero-subtitle">Discover the Magic</p>
+    </div>
+</div>
+
+<div class="intro-section">
+    <div class="container">
+        <div class="intro-content">
+            <h2>About This Site</h2>
+            <p class="intro-text">
+                Welcome to msite, your portal to mystical predictions and digital fortune-telling.
+                Our Magic 8-Ball uses advanced algorithms to provide you with consistent,
+                thoughtful answers to all of life's important questions.
+            </p>
+            <p class="intro-text">
+                Simply navigate to our Magic 8-Ball page, ask your question, and receive
+                wisdom from the digital oracle. The same question will always yield the
+                same answer, ensuring consistency in your cosmic guidance.
+            </p>
+            <a href="{% url 'predictor:magic8ball' %}" class="cta-button">
+                Try the Magic 8-Ball
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
