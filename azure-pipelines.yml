@@ -1,0 +1,25 @@
+trigger:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: Docker@2
+  displayName: Build and Push
+  inputs:
+    containerRegistry: 'modrekregistry'
+    repository: 'msite'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
+    tags: '$(Build.BuildId)'
+
+- task: AzureContainerApps@1
+  displayName: Deploy to Container App
+  inputs:
+    azureSubscription: 'modrek-azure'
+    containerAppName: 'uae-modrek-pipeline-dev'
+    resourceGroup: 'uae-modrek-rg'
+    imageToDeploy: 'modrekregistry.azurecr.io/msite:$(Build.BuildId)'
