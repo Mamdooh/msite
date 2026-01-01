@@ -10,7 +10,7 @@ steps:
 - task: Docker@2
   displayName: Build and Push
   inputs:
-    containerRegistry: 'modrekregistry'
+    containerRegistry: 'Pipeline-Dev_RegConn'
     repository: 'msite'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
@@ -19,7 +19,7 @@ steps:
 - task: AzureContainerApps@1
   displayName: Deploy to Container App
   inputs:
-    azureSubscription: 'modrek-azure'
+    azureSubscription: 'Pipeline-Dev_ResourceConn'
     containerAppName: 'uae-modrek-pipeline-dev'
     resourceGroup: 'uae-modrek-rg'
     imageToDeploy: 'modrekregistry.azurecr.io/msite:$(Build.BuildId)'
