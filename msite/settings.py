@@ -27,6 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+# CSRF trusted origins for Azure Container Apps
+CSRF_TRUSTED_ORIGINS = [
+    'https://uae-modrek-pipeline-dev.mangosmoke-d58ab2b4.uaenorth.azurecontainerapps.io',
+]
+
 
 # Application definition
 
